@@ -8,7 +8,7 @@ const GitCard = ({data={id:1,image:"",title:",",description:"",tags:[],repoLink:
 
         <img src={data.image} alt="" srcset="" />
         <h3>{data.title}</h3>
-        <p>{data.description}</p>
+        <p className="description">{data.description}</p>
         <div className="tags">
             {
                data.tags.map(tag =><p className="tag">{tag}</p>)
@@ -18,7 +18,7 @@ const GitCard = ({data={id:1,image:"",title:",",description:"",tags:[],repoLink:
         <div className="urls">
 
             <a href={data.repoLink}>Repository</a>
-            <a href={data.demoLink}>Demo link</a>
+            {data.demoLink && <a href={data.demoLink}>Demo link</a>}
 
 
 
