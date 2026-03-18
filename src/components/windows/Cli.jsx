@@ -8,9 +8,9 @@ const Terminal =
   ReactConsoleEmulator.default ||
   ReactConsoleEmulator;
 
-const Cli = () => {
+const Cli = ({windowName, setwindowState, setMinimizedState}) => {
   return (
-    <MacWindow>
+    <MacWindow windowName={windowName} setwindowState={setwindowState} setMinimizedState={setMinimizedState}>
       <div className="cli-window">
         <Terminal
           commands={{

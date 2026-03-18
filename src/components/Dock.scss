@@ -76,5 +76,26 @@
     .icon:has(+ .icon:hover) {
         transform: scale(1.1) translateY(-10%);
     }
- 
+
+    .minimized {
+      animation: pulse 1.3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .minimized-badge {
+      position: absolute;
+      right: 7px;
+      bottom: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
 }
