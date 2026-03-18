@@ -2,16 +2,16 @@
   display: flex;
   gap: 1rem;
 
-
   position: absolute;
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(68, 68, 68, 0.449);
+  background-color: rgba(68, 68, 68, 0.8);
   padding-inline: 1rem;
   padding-block: 0.75rem;
   border-radius: 0.75rem;
   backdrop-filter: blur(10px);
+  z-index: 9999;
 
   .icon {
     padding: 0.65rem;

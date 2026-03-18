@@ -24,7 +24,9 @@ const Dock = ({windowState, minimizedState, openWindow}) => {
         <img src="./doc-icons/pdf.svg" alt="" />
         {minimizedState.resume && <span className="minimized-badge" />}
       </div>
-      <div className="icon calender"><img src="./doc-icons/calender.svg" alt="" /></div>
+      <div className="icon calender" onClick={() => window.open('https://calendar.google.com', '_blank')}>
+        <img src="./doc-icons/calender.svg" alt="" />
+      </div>
 
       <div
         onClick={() => openWindow('spotify')}
@@ -33,8 +35,8 @@ const Dock = ({windowState, minimizedState, openWindow}) => {
         <img src="./doc-icons/spotify.svg" alt="" />
         {minimizedState.spotify && <span className="minimized-badge" />}
       </div>
-      <div className="icon mail"><img src="./doc-icons/mail.svg" alt="" /></div>
-      <div className="icon link"><img src="./doc-icons/link.svg" alt="" /></div>
+      <div className="icon mail" onClick={() => window.open('https://mail.google.com', '_blank')}><img src="./doc-icons/mail.svg" alt="" /></div>
+      <div className="icon link" onClick={() => window.open('https://www.linkedin.com/in/sumiran-kamde-b08166287/')}><img src="./doc-icons/link.svg" alt="" /></div>
       <div
         onClick={() => openWindow('cli')}
         className={`icon cli ${minimizedState.cli ? 'minimized' : ''}`}

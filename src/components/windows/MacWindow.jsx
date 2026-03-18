@@ -5,8 +5,9 @@ import "./MacWindow.scss";
 const MacWindow = ({children,width="40vw",height="40vh", windowName, windowState, setwindowState, setMinimizedState}) => {
   const [closing, setClosing] = useState(false);
   const [minimizing, setMinimizing] = useState(false);
-  const [maximized, setMaximized] = useState(false);
-  const [rndState, setRndState] = useState({ width, height, x: 300, y: 200 });
+  const [maximized, setMaximized] = useState(true);
+  const [rndState, setRndState] = useState({ width: window.innerWidth, height: window.innerHeight, x: 0, y: 0 });
+  const [restoreRect, setRestoreRect] = useState({ width: 600, height: 400, x: 100, y: 80 });
 
   useEffect(() => {
     if (closing) {
@@ -27,7 +28,19 @@ const MacWindow = ({children,width="40vw",height="40vh", windowName, windowState
 
   const handleClose = () => setClosing(true);
   const handleMinimize = () => setMinimizing(true);
-  const toggleMaximize = () => setMaximized(state => !state);
+  const toggleMaximize = () => {
+    setMaximized((curr) => {
+      if (curr) {
+        // currently maximized -> restore
+        setRndState({ ...restoreRect });
+        return false;
+      }
+      // currently restored -> maximize
+      setRestoreRect({ width: rndState.width, height: rndState.height, x: rndState.x, y: rndState.y });
+      setRndState({ width: window.innerWidth, height: window.innerHeight, x: 0, y: 0 });
+      return true;
+    });
+  };
 
   const size = maximized
     ? { width: window.innerWidth, height: window.innerHeight }
