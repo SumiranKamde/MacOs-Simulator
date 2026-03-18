@@ -6,12 +6,12 @@ import "./Github.scss"
 const GitCard = ({data={id:1,image:"",title:",",description:"",tags:[],repoLink:"",demoLink:""}}) => {
     return <div className="card">
 
-        <img src={data.image} alt="" srcset="" />
+        <img src={data.image} alt={data.title || "Project screenshot"} />
         <h3>{data.title}</h3>
         <p className="description">{data.description}</p>
         <div className="tags">
             {
-               data.tags.map(tag =><p className="tag">{tag}</p>)
+               data.tags.map((tag, index) => <p className="tag" key={`${data.id || 0}-${index}`}>{tag}</p>)
             }
         </div>
 
@@ -30,8 +30,8 @@ const Github = () => {
   return (
     <MacWindow>
         <div className="cards">
-            {githubData.map(project =>{
-                return <GitCard data={project}/>
+            {githubData.map(project => {
+                return <GitCard key={project.id || project.title} data={project}/>
             })}
 
 
